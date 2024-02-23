@@ -1,0 +1,64 @@
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: black;  
+}
+
+.clock-container {
+  text-align: center;
+}
+
+.clock {
+  font-family: Arial, sans-serif;
+  --border-size: 6px;
+  --border-angle: 0turn;
+  font-size: 72px;
+  color: #920870;
+  padding: 20px; 
+  border-radius: 10px; 
+  display: inline-block; 
+  box-sizing: border-box;
+  background-image: conic-gradient(
+    from var(--border-angle),
+    #213,
+    #112,
+    #213
+  ),
+  conic-gradient(
+    from var(--border-angle),
+    transparent 20%,
+    rgb(179, 255, 0),
+    #08f,
+    rgb(0, 255, 106),
+    rgb(98, 0, 255)
+    
+  );
+
+  background-size: calc(100% - (var(--border-size) * 2))
+  calc(100% - (var(--border-size) * 2)),
+  cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  animation: bg-spin 3s linear infinite;
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.clock:hover {
+  animation-play-state: paused;
+}
